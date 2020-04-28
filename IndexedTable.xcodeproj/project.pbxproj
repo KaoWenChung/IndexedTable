@@ -13,6 +13,7 @@
 		21EA6F0B245869FB00CB8863 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21EA6F09245869FB00CB8863 /* Main.storyboard */; };
 		21EA6F0D245869FD00CB8863 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21EA6F0C245869FD00CB8863 /* Assets.xcassets */; };
 		21EA6F10245869FD00CB8863 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21EA6F0E245869FD00CB8863 /* LaunchScreen.storyboard */; };
+		21EA6F18245874F900CB8863 /* IndexedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA6F17245874F900CB8863 /* IndexedTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		21EA6F0C245869FD00CB8863 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21EA6F0F245869FD00CB8863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21EA6F11245869FD00CB8863 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21EA6F17245874F900CB8863 /* IndexedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexedTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				21EA6F0C245869FD00CB8863 /* Assets.xcassets */,
 				21EA6F0E245869FD00CB8863 /* LaunchScreen.storyboard */,
 				21EA6F11245869FD00CB8863 /* Info.plist */,
+				21EA6F17245874F900CB8863 /* IndexedTableViewController.swift */,
 			);
 			path = IndexedTable;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			files = (
 				21EA6F08245869FB00CB8863 /* ViewController.swift in Sources */,
 				21EA6F04245869FB00CB8863 /* AppDelegate.swift in Sources */,
+				21EA6F18245874F900CB8863 /* IndexedTableViewController.swift in Sources */,
 				21EA6F06245869FB00CB8863 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
