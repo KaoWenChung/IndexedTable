@@ -11,14 +11,15 @@ import UIKit
 class IndexedTableViewController: UITableViewController {
     
     
-    let names = ["Aaron", "Adam", "Adolph", "Bert", "Carey", "Colin", "Eden", "Edmund", "Elmo", "Gary", "Giles", "Harvie", "Hiram", "Jeff", "Jeremy", "Jo", "Kelly", "Nick", "Neil", "Noah", "Perry", "Philip", "Sampson", "Scott", "Sidney", "Simon", "Tim", "Todd", "Tracy", "Troy", "Vincent", "Walker", "Wayne", "Wythe", "Yasir", "York", "Zavier"]
+    let names = ["Bear", "Black Swan", "Buffalo", "Camel", "Cockatoo", "Dog", "Donkey", "Emu", "Giraffe", "Greater Rhea", "Hippopotamus", "Horse", "Koala", "Lion", "Llama", "Manatus", "Meerkat", "Panda", "Peacock", "Pig", "Platypus", "Polar Bear", "Rhinoceros", "Seagull", "Tasmania Devil", "Whale", "Whale Shark", "Wombat"]
     var namesDict = [String:[String]]()
     var nameSectionTitles = [String]()
     let nameIndexTitles = ["A", "B", "C","D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Create names list
+        createNameDict()
         
     }
 
@@ -43,9 +44,51 @@ class IndexedTableViewController: UITableViewController {
         return nameValues.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
         // Configure the cell
-        let firstLetter = nameSectionTitles
+        let firstLetter = nameSectionTitles[indexPath.section]
+        if let nameValues = namesDict[firstLetter] {
+            cell.textLabel?.text = nameValues[indexPath.row]
+        }
+        return cell
     }
     
+    func createNameDict() {
+        for name in names {
+            let firstLetter = String(name.prefix(1))
+            if var nameValues = namesDict[firstLetter]{
+                nameValues.append(name)
+                namesDict[firstLetter] = nameValues
+            } else {
+                namesDict[firstLetter] = [name]
+            }
+            // Get keys from dict and sort by section title
+            nameSectionTitles = [String](namesDict.keys)
+            nameSectionTitles = nameSectionTitles.sorted(by: {$0 < $1})
+        }
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return nameIndexTitles
+    }
+    
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        
+        guard let index = nameSectionTitles.firstIndex(of: title) else {
+            return -1
+        }
+        return index
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let headerView = view as! UITableViewHeaderFooterView
+        headerView.backgroundView?.backgroundColor = UIColor(red: 236.0/255.0, green: 76.0/255.0, blue: 241.0/255.0, alpha: 1.0)
+        headerView.textLabel?.font = UIFont(name: "Avenir", size: 25.0)
+    }
     
 }
