@@ -18,9 +18,8 @@ class IndexedTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Create names list
+        // Create names dictionary
         createNameDict()
-        
     }
 
     // MARK: - Table view data source
