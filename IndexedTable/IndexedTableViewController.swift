@@ -42,6 +42,19 @@ class IndexedTableViewController: UITableViewController {
         }
         return nameValues.count
     }
+    
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        
+        guard let index = nameSectionTitles.firstIndex(of: title) else {
+            return -1
+        }
+        return index
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return nameIndexTitles
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
@@ -67,27 +80,4 @@ class IndexedTableViewController: UITableViewController {
             nameSectionTitles = nameSectionTitles.sorted(by: {$0 < $1})
         }
     }
-    
-    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return nameIndexTitles
-    }
-    
-    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        
-        guard let index = nameSectionTitles.firstIndex(of: title) else {
-            return -1
-        }
-        return index
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
-    
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let headerView = view as! UITableViewHeaderFooterView
-        headerView.backgroundView?.backgroundColor = UIColor(red: 236.0/255.0, green: 76.0/255.0, blue: 241.0/255.0, alpha: 1.0)
-        headerView.textLabel?.font = UIFont(name: "Avenir", size: 25.0)
-    }
-    
 }
